@@ -1,6 +1,13 @@
 Project
-=============
-Please use this template for your project.
+Weather Forecast (Group 18)
 
-List your group's member's below with ID and name.
+Published by
+
+Thitaree Sinthusai - 65315503022
+Bilal Sulaiman - 6531503044
+Panida Boonsri - 6531503046
+Att Chainant - 6531503090
+Kiattisak Deeprasert - 6531503199
+Pongsakorn Onprom - 6531503201
+
 
