@@ -2,7 +2,6 @@ package model.weather.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +13,11 @@ import org.springframework.web.client.RestTemplate;
 import model.weather.Model.Location;
 import model.weather.Model.LocationRepository;
 import model.weather.Model.WeatherResponse;
-import model.weather.Security.User;
 import model.weather.Service.LocationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -166,23 +163,16 @@ public class WeatherController {
 
     
 
-        @PostMapping("/saveLocation")
-        public String saveLocation(@RequestParam double latitude, @RequestParam double longitude, Authentication authentication) {
-        // Get the currently authenticated user
-        User currentUser = (User) authentication.getPrincipal();
-
-        // Check if the location already exists for the user
-        List<Location> existingLocationOptional = locationService.getLocationByUser(currentUser);
-
-        // Create a new location
-        Location newLocation = new Location(currentUser, latitude, longitude, "Custom Name"); // You might want to provide a name
-        locationService.saveCurrentLocation(newLocation);
-
-        // Redirect to the user's profile or another appropriate page
+    @PostMapping("/saveLocation")
+    public String saveLocation(@ModelAttribute Location location) {
+        locationRepository.save(location);
         return "redirect:/bookmarks";
-    }
+        }
 
-
+    
+    
+    
+    
 
     @GetMapping("/error")
     public String handleError(Model model, HttpServletRequest request) {
