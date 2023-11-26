@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Report</title>
+    <link rel="stylesheet" th:href="@{/CSS/weather.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/45e523fc50.js" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATCn5mbqGNc5-VMUsxRy1NS648Camoqcg&libraries=places"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+      
+</head>
+<body>
+    
+    <div class="quick-info">
+        <form th:action=@{/search} id="location-form" onsubmit="event.preventDefault();" method="get">
+            <input id="location-input" type="text" placeholder="Enter a location" autocomplete="off">
+            <button type="submit" onclick="getLocationDetails()">Search</button>
+            
+        </form>    
+        <div class="inner">
+            <div class="temp-container">
+                <span class="temperature" th:text="${weather.current.temp}">0</span><span class="degree-celsius">°C</span>
+            </div>
+            <h1><span th:text="${city}"></span></h1>
+            <div class="row">
+                <div class="column" >
+                <h2>Feels Like</h2>
+                <span class="feels" th:text="${weather.current.feelsLike}">0</span><span class="feels-celsius">°C</span>
+                </div>
+                <div class="column">
+                    <h2>Humidity</h2>
+                    <span class="humidity" th:text="${weather.current.humidity}">0</span><span class="humidity-per">%</span>
+                </div>
+                <div class="column">
+                    <h2>Precipitation</h2>
+                    <span class="Precipitation" th:text="${weather.hourly[0].probabilityOfPrecipitation}">0</span><span class="precipitation">%</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="notification">
+        <div class="badge">
+            <span class="logo">
+                <i class="fa-solid fa-circle-info" style="color: #ffffff;"></i></span><span class="text">Notification</span>   
+        </div>
+        <hr>
+        <div class="context"></div>
+    </div>
+
+    <div class="hourly-forecast">
+        <div class="badge">
+            <span class="logo">
+                <i class="fa-solid fa-clock" style="color: #ffffff;"></i></span><span class="text">Hourly Forecast</span>   
+        </div>
+        <hr>
+        <div class="context">
+            <div id="hourly" class="scroll-container">
+                <div th:each="hour : ${weather.hourly}" class="hour-block">
+                    <hr id="hourly-status">
+                    <div class="hourly-time">
+                        <span th:text="${hour.getFormattedTime()}">00:00 AM</span>
+                    </div>
+                    <div class="hourly-icon">
+                    </div>
+                    <div class="hourly-temp">
+                        <span th:text="${hour.temp} + '°'">0°C</span>
+                    </div>
+                </div>             
+            </div>            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>          
+        </div>
+        
+    </div>
+
+    <div class="weekly-forecast">
+        <div class="badge">
+            <span class="logo">
+                <i class="fa-regular fa-calendar" style="color: #ffffff;"></i></span><span class="text">Weekly Forecast</span>   
+        </div>
+        <hr>
+        <div th:each="day : ${weather.daily}" class="Weekly-context">
+            <table style="width:100%">
+                <tr>
+                <td style="width:8%"><hr style="height: 40px; width: 5px; background-color: #7DCBF9; border: none; margin-left: 15px;"/></td>
+                <td style="width:40%"><span th:text="${day.weather[0].description}" style="font-weight: 500;margin-left: 5px;">0°C</span></td>
+                <td style="font-weight: 700;width:15%"><span th:text="'L:' + ${day.temp.min} + '°'" style="width:5%; color: #81d3eb;">0°C</span><span th:text="'    '" style="width:5%">0°C</span><span th:text="'H:'+${day.temp.max} + '°'" style="width:5%; color: #Ef4056;">0°C</span></td>
+                <td style="width:15%"><span th:text="${#dates.format(new java.util.Date(day.dateTime * 1000), 'EEE')}" style="margin-right: 10px; text-align: right;font-weight: 500;">Day</span></td>
+                </tr>
+            </table>
+        </div>    
+    </div> 
+    
+    <!-- Add other parts of the weather data as needed -->
+
+    <!-- Add your JavaScript file -->
+    <script>
+        let autocomplete;
+
+        function initializeAutocomplete() {
+            const locationInput = document.getElementById('location-input');
+            autocomplete = new google.maps.places.Autocomplete(locationInput);
+
+            autocomplete.addListener('place_changed', function() {
+                const place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    console.log("No details available for input: '" + place.name + "'");
+                    return;
+                }
+
+                document.getElementById('place-name').textContent = place.name || '';
+                document.getElementById('place-id').textContent = place.place_id || '';
+                document.getElementById('place-address').textContent = place.formatted_address || '';
+                document.getElementById('latitude').textContent = place.geometry.location.lat() || '';
+                document.getElementById('longitude').textContent = place.geometry.location.lng() || '';
+            });
+        }
+
+        function getLocationDetails() {
+            const place = autocomplete.getPlace();
+            if (!place.geometry) {
+                alert("Please select a location from the dropdown.");
+                return;
+            }
+            sendDataToServer(place.geometry.location.lat(), place.geometry.location.lng(), place.name);
+        }
+
+        function sendDataToServer(lat, lng, placeName) {
+            // Replace with the URL where you want to send the data
+            const url = `/search?latitude=${lat}&longitude=${lng}&placeName=${encodeURIComponent(placeName)}`;
+            window.location.href = `/search?latitude=${lat}&longitude=${lng}&placeName=${encodeURIComponent(placeName)}`;
+            fetch(url)
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('server-response').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+        initializeAutocomplete();
+        </script>
+</body>
+
+<footer>
+    <p>Copyright © 2023 Mae Fah Luang University. All rights reserved.</p>
+    <p><a href="https://www.freepik.com/free-vector/gradients-weather-icons-apps_15292633.htm#query=weather%203d&position=0&from_view=keyword&track=ais&uuid=62a7d637-206b-4c05-96ed-25eebfff5635">Image by coolvector</a> on Freepik</p>
+</footer>
+
+</html>

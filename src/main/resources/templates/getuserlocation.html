@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get User Location</title>
+</head>
+<body>
+    <h1>Get User Location</h1>
+
+    <p id="location">Loading...</p>
+
+    <script>
+        // Function to get user's location
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("location").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        // Function to display the user's position
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            document.getElementById("location").innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+
+            // Set the values in hidden form fields
+            document.getElementById("latitudeInput").value = latitude;
+            document.getElementById("longitudeInput").value = longitude;
+
+            // Automatically submit the form after obtaining the location
+            document.getElementById("locationForm").submit();
+        }
+
+        // Function to handle errors in geolocation
+        function showError(error) {
+            // Handle errors as needed
+        }
+
+        // Call the function to get user's location when the page loads
+        window.onload = getUserLocation;
+    </script>
+
+    <form id="locationForm" action="/" method="post">
+        <input type="hidden" id="latitudeInput" name="latitude" th:value="${latitude}" />
+        <input type="hidden" id="longitudeInput" name="longitude" th:value="${longitude}" />
+    </form>
+</body>
+</html>

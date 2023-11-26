@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "project-weatherforcast",
+  "private_key_id": "dfe18065b6c2806cac26412288a417b7b9215ce9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDAizCbfj/u6VG3\nhU4jQ3p+MpTAVUXeHo41PhgMH16f5sr0RzmwbOJlvtDXpZi8uaT8vg61Q4AUbF6R\nfxCa2jAq5qQnrvfL2uQw239OlaNnf/5JzQwKWnxhGtVULcc4kDrTkPqTFPFhdvtW\n4UnC0AIRlx1O1+rkqs/sR7DItar6wqQq22YX1C+of/AtaxXo5rR5t/A8O/VWnOEV\npxiKRDMATnA8IhaCmZCvRssCDPmX7cT/6dd3JcFHI6WAxXQmeVirPXqHpq0ggLgT\nUTH8qkXS11zhzhn+ALOoK4FSrZGd20js8brOwaNW+2CyZREUtGLYhHBSwj2lgTY3\nh6uJMpNXAgMBAAECggEAFI6HyQIop0RH0jUsS32H1XNnCEXSaM2QV0Ti4mBzBNVq\nM7xq/1gQr9Y4i92FOhkD8WwFO/sR8JxFWHldd3r2C46GVipLEHu1QzYcGHLHeGRk\n7NI0h+JzRxbLUep1S6eycCYZapygzMwcN4FkE6WLov8kROeuj21hN5PL3xHuSElR\n3WgWJEIwZ66rt+/lPsZxaEb4Q0Y/E9Q1KmRYVcl3EZfeFgn2+PipEBRzWw5nc63K\ntr+IvHyXerNjH5Nj1dgSxlxWO3RXHhZ6iSUjao+AgdySxq/DEA+EeugFmaj4iFw4\n5h7IGKGHOC/riiIMd1d3SvVQmFZ0Es0FmAa6kdALmQKBgQD8FFSKCJP68yH6PZZf\n2zHRStKcXzJPdRRo6mnueeRaHccZi82r8pXeB24colTDYMJ9VyUbp5julb2rI/Oa\nITrt/yLroSCHAP4v9q4Qzihbl35Il9eQNJBFuIyz6Ler/I9A/OhzMpwte9uGzknR\nzmMmipb4UkMlEJk+dFrt7KcjnQKBgQDDidCGpxNArVoH/RbtWUU3htZhWupRCGDP\nJq710A/DZ/bUztdvLMRdRVXLCiavroHeAzPndVnSY7qS5UVXlDFn1tVZrIMzdjMU\nCORhZy8USy/umD1hSptmRhgIlj8jKE/5EhxMDvhtV3E7Gd4yrKdpXTxB1ELJEY4P\nEQ6SMwqigwKBgQCwvJxNLxh5oQ/YgGe3C1rRT7F8e24tsXu+12OwFPwahrg6W/+2\np92VjwYPw2zEk0mpUXkt+4LI/Gm/3PQFw3iqtvBH3m+M2BBfloeSNsiq9vtOcE9t\nxrzEdVEJLofgaLITsX5Ujk5bwXQ3/thY5mgz9IVG035KNWoMFM5P9FV3LQKBgQCD\nUlUXebG2aDXk05bIRIH17rqfm51uWoAZ31L1h4xuoa3l8hxBcAFY2q3ptKGSr1JM\ntj3vnqJ6Z7vv18agMMiVgnS6yt86epGHTQmEWPYHXQ+N3/SpGKARKdYOPkmc5QAA\nuKcEdbFmTamgFZli0w2D97f2RgWsX/vWJpBwo5Lq3QKBgFVrQXf10Qsy9bKZghx7\nKoq+N96mevrSNTmckVqZfVJabH3cxQwQU9xBQIsJTj3AaMcmIpizO01mFWgD1BX2\n5W62ln5N3t1Ss4c+ehluZ45A2YSUnUZjhKc2J0pLUEyrfkLQC9hu4TGp5sVb+LJE\nIthZcAHTziCVcM4GutMpm4Ps\n-----END PRIVATE KEY-----\n",
+  "client_email": "weather@project-weatherforcast.iam.gserviceaccount.com",
+  "client_id": "113698719096825882786",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/weather%40project-weatherforcast.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
