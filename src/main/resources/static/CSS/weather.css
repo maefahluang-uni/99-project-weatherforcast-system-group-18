@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Linefont:wght@100&display=swap');
+
+body{
+    background-color: #000000;
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+}
+
+.quick-info {
+  border-radius: 0 0 15px 15px;
+  background-image: url(/resource/weather-main-sunny.png);
+  background-position: center top; /* This centers the image in the container */
+  background-repeat: no-repeat; /* This will prevent the image from tiling */
+  background-size: cover; /* This will ensure the image covers the entire element, though it may be cropped */
+  color: white; /* Text color */
+  max-width: 500px; /* Maximum width of the box */
+  height: 500px; /* Maximum height of the box */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  font-family: Arial, sans-serif; /* Font style */
+  position: relative;
+  margin-top: 0px;
+  justify-content: center;
+
+}
+
+@media screen and (min-width: 500px) {
+    .quick-info, .notification, .hourly-forecast, .weekly-forecast {
+    margin: auto;
+    }
+}
+
+.quick-info .inner{
+    border-radius: 187.5px 187.5px 15px 15px;
+    mix-blend-mode: luminosity;
+    height: 300px;
+     /* Position .inner absolutely */
+    bottom: 0; /* Anchor to the bottom */
+    left: 0; /* Anchor to the left */
+    right: 0; /* Anchor to the right */
+    position: -79 0 0 0 px;
+    text-align: center;
+}
+
+.quick-info p {
+    margin: 10px 0; /* Space between paragraphs */
+    font-size: 16px; /* Font size */
+}
+
+.quick-info span {
+    font-weight: bold; /* Make the numbers bold */
+}
+
+.temp-container {
+    text-align: center; /* Center the content horizontally */
+    display: block; /* By default div is block, but ensuring it for context */
+    padding-top: 250px;/* additional styling for positioning or size can be added here */
+}
+
+.temperature {
+    font-size: 96px; /* Large size for the temperature value */
+    line-height: 1; /* Ensuring the line height matches the content for better alignment */
+    display: inline; /* Inline display to keep °C next to the temperature */
+}
+
+.degree-celsius {
+    font-size: 36px; /* Smaller size for the degree symbol and text */
+    vertical-align: super; /* Aligns the °C slightly above the baseline */
+    display: inline; /* Inline display to keep °C next to the temperature */
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+#city{
+    margin-top: 0px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+/* Create three equal columns that floats next to each other */
+.row {
+    display: flex;
+    justify-content: center; /* This will center the child elements (columns) horizontally */
+    flex-wrap: wrap;
+    margin-top: 0%;
+    padding: 0%; /* This allows columns to wrap into a new row if there's not enough space */
+  }
+  
+.column {
+    width: 30%;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
+    padding: 0%;
+     /* This ensures padding is included in the width */
+  }
+
+.column h2 {
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+  }
+
+.feels,.humidity,.Precipitation {
+color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.notification,.weekly-forecast,.hourly-forecast{
+    border-radius: 15px;
+    border: 1.5px solid #303030;
+    background: #171717;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: white; /* Text color */
+    max-width: 500px; /* Maximum width of the box */ /* Maximum height of the box */
+    font-family: Arial, sans-serif; /* Font style */
+    position: relative;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.badge{
+    display: flex;
+    height: 100%;
+    padding-left: 3%;
+    padding-top: 3%;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 0%;
+    height: 25px;
+}
+
+.text{
+    padding-left: 2%;
+    height: 0px;
+}
+
+hr{
+    width: 95%;
+}
+
+#hourly {
+    display: flex; /* Establish a flex container */
+    flex-direction: row; /* Lay out children in a row (this is the default) */
+    align-items: center; /* Center items vertically */
+    justify-content: start; /* Align items to the start of the container horizontally */
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
+    padding-left: 5%;
+    padding-right: 5%; /* Firefox */ /* Enable horizontal scrolling if there are many items */
+  }
+  /* Optional: Hide scrollbar for a cleaner look */
+#hourly::-webkit-scrollbar {
+    display: none;
+  }
+
+.hour-block {
+    flex: 0 0 auto; /* Don't grow, don't shrink, and basis is auto */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center items horizontally */
+    margin-right: 30px; /* Space between blocks */
+}
+
+.hourly-time{
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hourly-temp{
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.hourly-icon{
+    font-size: 28px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#hourly-status{
+    background: linear-gradient(91.9deg, rgb(93, 248, 219) 27.8%, rgb(33, 228, 246) 67%);
+    height: 5px;
+    border: none;
+}
+table, th, td {
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
+}
+
+footer {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 10px;
+    text-align: center;
+    padding: 10px 10px;
+    margin-top: 10px;
+}
+
+footer p{
+    margin: 0px;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
