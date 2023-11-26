@@ -45,8 +45,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers(
                 "/",
                 "/registration**",
-                "/js/**",
-                "/css/**",
+                "/JS/**",
+                "/CSS/**",
                 "/img/**").permitAll()
             .antMatchers("/login/weather/**").authenticated() // This line ensures that /weather is only accessible to authenticated users
         .anyRequest().authenticated()
