@@ -13,8 +13,7 @@ steps:
    - 'deploy'
    - 'lab-cd'
    - '--image'
-   - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weathe
-   r-forcast/weather-forcast:$COMMIT_SHA'
+   - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/weather-forcast:$COMMIT_SHA'
    - '--region'
    - 'us-central1'
    - '--allow-unauthenticated'
