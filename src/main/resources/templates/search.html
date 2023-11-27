@@ -3,10 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>Location Search</title>
+    <link rel="stylesheet" th:href="@{/CSS/navbar.css}">
     <!-- Replace with your own Google Maps API key -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATCn5mbqGNc5-VMUsxRy1NS648Camoqcg&libraries=places"></script>
 </head>
 <body>
+    <nav> 
+        <div class="nav-content">
+            <a class="logo" href="#" th:href="@{/}">Weather Forecast</a>
+            <div class="nav-icon">
+                <div class="bar one"></div>
+                <div class="bar two"></div>
+            </div>
+
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/bookmarks">Bookmark</a>
+
+                <br>
+                <a href="/login">Login</a>
+            </div>
+            
+            <form th:action=@{/search} id="location-form" onsubmit="event.preventDefault();" method="get">
+                <input id="location-input" type="text" placeholder="Enter a location" autocomplete="off">
+                <button type="submit" onclick="getLocationDetails()"><ion-icon name="search-outline" ></ion-icon></button>
+                <ui id="suggestion"></ui>
+            </form> 
+        </div>
+    </nav>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        const inputField = document.getElementById('autocomplete');
+        const suggestionsList = document.getElementById('suggestions');
+
+        inputField.addEventListener('input', function() {
+            const inputValue = inputField.value.toLowerCase();
+
+            // Clear suggestions if the input field is empty
+            if (inputValue === '') {
+                clearSuggestions();
+                return;
+            }
+
+            const suggestions = countries.filter(country => country.toLowerCase().startsWith(inputValue));
+            displaySuggestions(suggestions);
+        });
+
+        function displaySuggestions(suggestions) {
+            suggestionsList.innerHTML = '';
+            suggestions.forEach(suggestion => {
+                const li = document.createElement('li');
+                li.textContent = suggestion;
+                li.addEventListener('click', function() {
+                    inputField.value = suggestion;
+                    clearSuggestions();
+                });
+                suggestionsList.appendChild(li);
+            });
+
+            // Display the suggestions list
+            suggestionsList.style.display = 'block';
+        }
+
+        function clearSuggestions() {
+            suggestionsList.innerHTML = '';
+            // Hide the suggestions list
+            suggestionsList.style.display = 'none';
+        }
+    </script>
+    <script>
+        const navIcon = document.querySelector(".nav-icon");
+        const nav = document.querySelector("nav");
+
+        navIcon.onclick = function () {
+            nav.classList.toggle('show');
+        }
+    </script>
+       
     <h1>Location Search</h1>
     <form id="location-form" onsubmit="event.preventDefault();">
         <input id="location-input" type="text" placeholder="Enter a location" autocomplete="off">

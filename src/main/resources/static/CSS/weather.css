@@ -20,6 +20,7 @@ body{
   position: relative;
   margin-top: 0px;
   justify-content: center;
+  margin-bottom: auto;
 
 }
 
@@ -233,3 +234,5 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+
