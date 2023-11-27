@@ -20,7 +20,7 @@ steps:
    - '--platform'
    - 'managed'
    - '--port'
-   - '8100'
+   - '8080'
 images:
  - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/'
 
