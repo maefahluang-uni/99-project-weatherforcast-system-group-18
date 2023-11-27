@@ -1,21 +1,43 @@
 package model.weather.Model;
 
+import java.util.Objects;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
+import model.weather.Security.User;
 
 @Entity
 public class Location {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "userid")
+    private Long userid;
 
     private double latitude;
     private double longitude;
-    private String name; 
+    private String name;
+
+    public Location() {
+    }
+
+    public Location(double latitude, double longitude, String name,Long userid) {
+        this.userid = userid;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.name = name;
+    }
 
     // Getters and setters
+
     public Long getId() {
         return id;
     }
@@ -39,6 +61,7 @@ public class Location {
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
+
     public String getName() {
         return name;
     }
@@ -47,5 +70,11 @@ public class Location {
         this.name = name;
     }
 
+    public Long getUserid() {
+        return userid;
+    }
 
+    public void setUserid(Long userid) {
+        this.userid = userid;
+    }
 }

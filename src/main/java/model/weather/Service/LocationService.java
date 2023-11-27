@@ -1,9 +1,13 @@
 package model.weather.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import model.weather.Model.Location;
 import model.weather.Model.LocationRepository;
+import model.weather.Security.User;
 
 @Service
 public class LocationService {
@@ -29,5 +33,7 @@ public class LocationService {
         return locationRepository.findById(id).orElse(null);
     }
 
-    
+    public List<Location> getLocationsByUserid(Long userid) {
+        return locationRepository.findByUserid(userid);
+    }
 }

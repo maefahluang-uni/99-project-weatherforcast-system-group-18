@@ -1,8 +1,12 @@
 package model.weather.Security;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
+import javax.transaction.Transactional;
 
-public interface UserService extends UserDetailsService{
-	User save(UserRegistrationDto registrationDto);
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Service;
+@Service
+public interface UserService extends UserDetailsService {
+    void save(User newUser);
 }
+
 

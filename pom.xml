@@ -12,7 +12,7 @@
 	<artifactId>weather</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>weather</name>
-	<description>9edc391f9b3e2cde722b0ee2fe0daab004191dac3fbf48c5cfb487b28d09c70e</description>
+	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -44,7 +44,11 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>-->
-		 <dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
 			<version>1.2.8.RELEASE</version>
