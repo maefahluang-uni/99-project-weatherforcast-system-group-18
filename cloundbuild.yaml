@@ -1,10 +1,10 @@
 steps:
  # Build the container image
  - name: 'gcr.io/cloud-builders/docker'
-   args: [ 'build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/webdev-dockers/lab-cd:$COMMIT_SHA', '.' ]
+   args: [ 'build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/weather-forcast:$COMMIT_SHA', '.' ]
  # Push the container image to Container Registry
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['push', 'us-central1-docker.pkg.dev${_PROJECT_ID}/webdev-dockers/lab-cd:$COMMIT_SHA']
+   args: ['push', 'us-central1-docker.pkg.dev${_PROJECT_ID}/weather-forcast/weather-forcast:$COMMIT_SHA']
  # Deploy container image to Cloud Run
  - name: 'gcr.io/cloud-builders/gcloud'
    entrypoint: gcloud
@@ -22,7 +22,7 @@ steps:
    - '--port'
    - '8100'
 images:
- - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/webdev-dockers/lab-cd'
+ - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/webdev-dockers/'
 
 substitutions:
   _PROJECT_ID: 'webdev-402207'
