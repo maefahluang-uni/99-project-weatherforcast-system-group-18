@@ -1,19 +1,19 @@
 steps:
  # Build the container image
  - name: 'gcr.io/cloud-builders/docker'
-   args: [ 'build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/weather-forcast:$COMMIT_SHA', '.' ]
+   args: [ 'build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/weater:$COMMIT_SHA', '.' ]
  # Push the container image to Container Registry
  - name: 'gcr.io/cloud-builders/docker'
-   args: ['push', 'us-central1-docker.pkg.dev${_PROJECT_ID}/weather-forcast/weather-forcast:$COMMIT_SHA']
+   args: ['push', 'us-central1-docker.pkg.dev${_PROJECT_ID}/weather-forcast/weater:$COMMIT_SHA']
  # Deploy container image to Cloud Run
  - name: 'gcr.io/cloud-builders/gcloud'
    entrypoint: gcloud
    args:
    - 'run'
    - 'deploy'
-   - 'lab-cd'
+   - 'weater'
    - '--image'
-   - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/weather-forcast:$COMMIT_SHA'
+   - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/weater:$COMMIT_SHA'
    - '--region'
    - 'us-central1'
    - '--allow-unauthenticated'
