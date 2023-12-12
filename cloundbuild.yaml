@@ -30,7 +30,7 @@ steps:
    
    '
 images:
- - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/'
+ - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/weather-forcast/weater'
 
 substitutions:
   _PROJECT_ID: 'webdev-402207'
